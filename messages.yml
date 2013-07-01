@@ -31,4 +31,5 @@ Withdraw: §a<1> §bhas been withdrawn from your account.
 Deposit: §a<1> §bhas been deposited to your account.
 Reload: §a[GriefPreventionFlags-Vault] Configuration Reloaded
 Error: §cAn error occured - <3>
+PriceError: §a<1> §cis not a valid price.
 SetError: §cAn error has occured in GriefPreventionFlags - Vault. The <0> cannot be set at this time.  Please contact your server administrator.
