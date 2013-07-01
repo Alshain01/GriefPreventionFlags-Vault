@@ -52,7 +52,6 @@ public enum EPurchaseType {
 	public boolean isRefundable() {
 		String message = GPFVault.instance.getConfig().getString("Refund." + this.toString());
 		
-		if (Boolean.valueOf(message)) {	return true; }
-		return false;
+		return Boolean.valueOf(message);
 	}
 }
