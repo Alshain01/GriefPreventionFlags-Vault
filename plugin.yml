@@ -55,12 +55,12 @@ commands:
     permissions: gpfvault.get
     usage: /getmessageprice <flag>
   setflagrefund:
-    description: Sets whether or not the flag price will be refunded when removed.
+    description: Toggles whether or not the flag price will be refunded when removed.
     aliases: sfr
     permissions: gpfvault.refund
     usage: /setflagrefund
   setmessagerefund:
-    description: Sets whether or not the message price will be refunded when removed.
+    description: Toggles whether or not the message price will be refunded when removed.
     aliases: smr
     permissions: gpfvault.refund
     usage: /setmessagerefund
