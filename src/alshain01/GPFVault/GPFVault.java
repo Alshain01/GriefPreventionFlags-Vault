@@ -162,6 +162,14 @@ public class GPFVault extends JavaPlugin {
 			return getPrice(EPurchaseType.Message, sender, args);
 		}
 		
+		if (command.equalsIgnoreCase("setflagrefundable")) {
+			return setRefundable(EPurchaseType.Flag, sender, args);
+		}
+		
+		if (command.equalsIgnoreCase("setmessagerefundable")) {
+			return setRefundable(EPurchaseType.Message, sender, args);
+		}
+		
 		if (command.equalsIgnoreCase("previewmessage")) {
 			return showMessage(sender, args);
 		}
