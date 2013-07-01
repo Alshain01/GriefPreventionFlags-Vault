@@ -32,7 +32,7 @@ import org.bukkit.ChatColor;
  * @author Kevin Seiden
  */
 public enum EMessages {
-  Invalid, SetPrice, GetPrice, LowFunds, Reload, Error, SetError;
+  Invalid, SetPrice, GetPrice, LowFunds, Reload, Error, SetError, PriceError;
 
 	/**
 	 * @return The localized message in messages.yml
