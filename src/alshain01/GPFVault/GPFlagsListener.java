@@ -93,19 +93,15 @@ public class GPFlagsListener implements Listener {
 		
 			// They have the money, make transaction
 			r = GPFVault.instance.economy.withdrawPlayer(player.getName(), cost);
-			if (r.transactionSuccess()) {
-				player.sendMessage(transaction.getLocal()
-						.replaceAll("<1>", GPFVault.instance.economy.format(cost)));
-				return false;
-			}
 		} else {
 			// Deposit
 			r = GPFVault.instance.economy.depositPlayer(player.getName(), cost);
-			if (r.transactionSuccess()) {
-				player.sendMessage(transaction.getLocal()
-						.replaceAll("<1>", GPFVault.instance.economy.format(cost)));
-				return false;
-			}
+		}
+		
+		if (r.transactionSuccess()) {
+			player.sendMessage(transaction.getLocal()
+					.replaceAll("<1>", GPFVault.instance.economy.format(cost)));
+			return false;
 		}
 		
 		// Something went wrong if we made it this far.
