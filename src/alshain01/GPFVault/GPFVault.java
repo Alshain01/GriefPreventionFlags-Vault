@@ -60,7 +60,7 @@ public class GPFVault extends JavaPlugin {
 	public void onEnable() {
 		instance = this;
 		// Create the configuration file if it doesn't exist
-		if(!(new File("./plugins/GriefPreventionFlags-Vault/config.yml").exists())) {
+		if(!(new File(this.getDataFolder() + "config.yml").exists())) {
 			this.saveDefaultConfig();
 
 			for (Type t : Type.values()) {
@@ -71,7 +71,7 @@ public class GPFVault extends JavaPlugin {
 		}
 		
 		// Create the messages file if it doesn't exist
-		if(!(new File("./plugins/GriefPreventionFlags-Vault/messages.yml").exists())) {
+		if(!(new File(this.getDataFolder() + "messages.yml").exists())) {
 			messages.saveDefaultConfig();
 		}
 		
