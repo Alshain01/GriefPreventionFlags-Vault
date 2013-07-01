@@ -304,6 +304,29 @@ public class GPFVault extends JavaPlugin {
 				.replaceAll("<1>", claim.getOwnerName()));
 		return true;
 	}
+	
+    	/**
+	 * Change the refund state in config.yml
+	 * 
+	 * @param type The product type to change
+	 * @param sender The CommandSender
+	 * @param args The arguments (there shouldn't be any)
+	 * @return true if a valid command, otherwise false
+	 */
+	protected boolean setRefundable(EPurchaseType type, CommandSender sender, String[] args) {
+		if (args.length != 0) { return false; }
+		GPFVault.instance.getConfig().set("Refund." + type.toString(), !type.isRefundable());
+		
+		String value = Messages.ValueColorTrue.getMessage().toLowerCase();
+		if(!type.isRefundable()) {
+			value = Messages.ValueColorFalse.getMessage().toLowerCase();
+		}
+	
+		sender.sendMessage(EMessages.RefundState.get()
+				.replaceAll("<0>", type.toString().toLowerCase())
+				.replaceAll("<4>", value));
+		return true;
+	}
 
     /**
      * Send a debug message to the console
