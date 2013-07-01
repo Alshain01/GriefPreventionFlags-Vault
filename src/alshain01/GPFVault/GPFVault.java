@@ -197,11 +197,20 @@ public class GPFVault extends JavaPlugin {
 		
 		// Check to see that the flag is valid
 		Flag flag = new Flag();
-		if (!flag.setType(args[0])) { return false; }
+		if (!flag.setType(args[0])) {
+			sender.sendMessage(Messages.InvalidFlagError.getMessage()
+					.replaceAll("<2>", args[0])
+					.replaceAll("<10>", EPurchaseType.Flag.getLocal().toLowerCase()));
+			return true; 
+		}
 		
 		// Check to see that the price is valid
 		try { Double.valueOf(args[1]); }
-		catch (NumberFormatException ex) { return false; }
+		catch (NumberFormatException ex) { 
+			sender.sendMessage(EMessages.PriceError.get()
+				.replaceAll("<1>", args[1]));
+			return true;
+		}
 		
 		// Set the new price
 		this.getConfig().set("Price." + type.toString() + "." + flag.getType().toString(), args[1]);
@@ -228,7 +237,12 @@ public class GPFVault extends JavaPlugin {
 		
 		// Check to see that the flag is valid
 		Flag flag = new Flag();
-		if (!flag.setType(args[0])) { return false; }
+		if (!flag.setType(args[0])) {
+			sender.sendMessage(Messages.InvalidFlagError.getMessage()
+					.replaceAll("<2>", args[0])
+					.replaceAll("<10>", EPurchaseType.Flag.getLocal().toLowerCase()));
+			return true; 
+		}
 
 		// Get the message
 		String setting = GPFVault.instance.getConfig()
