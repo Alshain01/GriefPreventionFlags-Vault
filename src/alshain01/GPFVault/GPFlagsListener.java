@@ -44,7 +44,7 @@ import src.john01dav.GriefPreventionFlags.events.MessageChangedEvent;
  * @author Kevin Seiden
  */
 public class GPFlagsListener implements Listener {
-  /**
+	/**
 	 * 
 	 * @param transaction The type of the transaction
 	 * @param type The type of charge (Flag or Message)
@@ -84,7 +84,7 @@ public class GPFlagsListener implements Listener {
 		if (transaction == ETransactionType.Withdraw) {
 			// Check to see if they have the money.
 			if (cost > GPFVault.instance.economy.getBalance(player.getName())) {
-				player.sendMessage(EMessages.GetPrice.get()
+				player.sendMessage(EMessages.LowFunds.get()
 						.replaceAll("<0>", product.getLocal().toLowerCase())
 						.replaceAll("<1>", GPFVault.instance.economy.format(cost))
 						.replaceAll("<2>", flag.getType().getLocalName()));
