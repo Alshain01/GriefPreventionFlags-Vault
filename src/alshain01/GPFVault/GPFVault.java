@@ -48,7 +48,7 @@ import src.john01dav.GriefPreventionFlags.Messages;
  * @author Kevin Seiden
  */
 public class GPFVault extends JavaPlugin {
-  public static GPFVault instance;
+	public static GPFVault instance;
 	protected Economy economy = null;
 	protected CustomConfig messages = new CustomConfig("messages.yml");
 	private final boolean DEBUG = false;
@@ -162,11 +162,11 @@ public class GPFVault extends JavaPlugin {
 			return getPrice(EPurchaseType.Message, sender, args);
 		}
 		
-		if (command.equalsIgnoreCase("setflagrefundable")) {
+		if (command.equalsIgnoreCase("setflagrefund")) {
 			return setRefundable(EPurchaseType.Flag, sender, args);
 		}
 		
-		if (command.equalsIgnoreCase("setmessagerefundable")) {
+		if (command.equalsIgnoreCase("setmessagerefund")) {
 			return setRefundable(EPurchaseType.Message, sender, args);
 		}
 		
@@ -214,9 +214,9 @@ public class GPFVault extends JavaPlugin {
 		
 		// Check to see that the price is valid
 		try { Double.valueOf(args[1]); }
-		catch (NumberFormatException ex) { 
+		catch (NumberFormatException ex) {
 			sender.sendMessage(EMessages.PriceError.get()
-				.replaceAll("<1>", args[1]));
+					.replaceAll("<1>", args[1]));
 			return true;
 		}
 		
@@ -312,8 +312,8 @@ public class GPFVault extends JavaPlugin {
 				.replaceAll("<1>", claim.getOwnerName()));
 		return true;
 	}
-	
-    	/**
+
+	/**
 	 * Change the refund state in config.yml
 	 * 
 	 * @param type The product type to change
@@ -324,7 +324,7 @@ public class GPFVault extends JavaPlugin {
 	protected boolean setRefundable(EPurchaseType type, CommandSender sender, String[] args) {
 		if (args.length != 0) { return false; }
 		GPFVault.instance.getConfig().set("Refund." + type.toString(), !type.isRefundable());
-		
+		GPFVault.instance.saveConfig();
 		String value = Messages.ValueColorTrue.getMessage().toLowerCase();
 		if(!type.isRefundable()) {
 			value = Messages.ValueColorFalse.getMessage().toLowerCase();
@@ -335,7 +335,7 @@ public class GPFVault extends JavaPlugin {
 				.replaceAll("<4>", value));
 		return true;
 	}
-
+	
     /**
      * Send a debug message to the console
      * 
