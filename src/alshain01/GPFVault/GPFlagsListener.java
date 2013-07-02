@@ -52,7 +52,7 @@ public class GPFlagsListener implements Listener {
 	 * @param player The player
 	 * @return True if the event should be cancelled due to insufficient funds or error.
 	 */
-	private boolean makeTransaction(ETransactionType transaction, EPurchaseType product, Flag flag, Player player) {
+	private static boolean makeTransaction(ETransactionType transaction, EPurchaseType product, Flag flag, Player player) {
 		// Get the YAML data path of the price.
 		String pricePath = "Price." + product.toString() + "." + flag.getType().toString();
 
@@ -118,7 +118,7 @@ public class GPFlagsListener implements Listener {
 	 * @param e The event data set.
 	 */
 	@EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
-	private void onFlagSet(FlagSetEvent e) {
+	private static void onFlagSet(FlagSetEvent e) {
 		// Don't charge for admin claims & if there is no player, we can't do anything
 		if (e.getClaim().isAdminClaim()) { return; }
 		if (e.getPlayer() == null) { return; }
@@ -149,7 +149,7 @@ public class GPFlagsListener implements Listener {
 	 * @param e The event data set.
 	 */
 	@EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
-	private void onFlagDelete(FlagDeleteEvent e) {
+	private static void onFlagDelete(FlagDeleteEvent e) {
 		// Don't charge for admin claims & if there is no player, we can't do anything
 		if (e.getClaim().isAdminClaim()) { return; }
 		if (e.getPlayer() == null) { return; }
@@ -177,7 +177,7 @@ public class GPFlagsListener implements Listener {
 	 * @param e The event data set.
 	 */
 	@EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
-	private void onMessageChanged(MessageChangedEvent e) {
+	private static void onMessageChanged(MessageChangedEvent e) {
 		// Don't charge for admin claims & if there is no player, we can't do anything
 		if (e.getClaim().isAdminClaim()) { return; }
 		if (e.getPlayer() == null) { return; }
