@@ -281,7 +281,7 @@ public class GPFVault extends JavaPlugin {
 	 * @param args   The command arguments
 	 * @return true if a valid command, otherwise false
 	 */
-	private boolean showMessage(CommandSender sender, String[] args) {
+	private static boolean showMessage(CommandSender sender, String[] args) {
 		// Make sure this is a player, we need claim information
 		if(!(sender instanceof Player)) { 
 			sender.sendMessage(Messages.NoConsoleError.getMessage());
@@ -321,7 +321,7 @@ public class GPFVault extends JavaPlugin {
 	 * @param args The arguments (there shouldn't be any)
 	 * @return true if a valid command, otherwise false
 	 */
-	protected boolean setRefundable(EPurchaseType type, CommandSender sender, String[] args) {
+	private boolean setRefundable(EPurchaseType type, CommandSender sender, String[] args) {
 		if (args.length != 0) { return false; }
 		GPFVault.instance.getConfig().set("Refund." + type.toString(), !type.isRefundable());
 		GPFVault.instance.saveConfig();
