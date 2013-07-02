@@ -4,6 +4,7 @@ import java.io.InputStream;
 
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.plugin.java.JavaPlugin;
 
 /**
  * Modified YAML manager from http://wiki.bukkit.org/Configuration_API_Reference
@@ -11,15 +12,17 @@ import org.bukkit.configuration.file.YamlConfiguration;
  * @author bukkit.org
  */
 public class CustomConfig {
-  private String dataFile;
-    private File customConfigFile = null;
-    private FileConfiguration customConfig = null;
+  private static JavaPlugin plugin;
+	private String dataFile;
+  private File customConfigFile = null;
+  private FileConfiguration customConfig = null;
     
     /**
      * Class Constructor
      * @param dataFile The file name for this CustomConfig
      */
-    protected CustomConfig(String dataFile) {
+    protected CustomConfig(JavaPlugin plugin, String dataFile) {
+		  CustomConfig.plugin = plugin;
     	this.dataFile = dataFile;
     }
     
@@ -28,12 +31,12 @@ public class CustomConfig {
      */
     protected void reloadCustomConfig() {
         if (customConfigFile == null) {
-        	customConfigFile = new File(GPFVault.instance.getDataFolder(), this.dataFile);
+        	customConfigFile = new File(plugin.getDataFolder(), this.dataFile);
         }
         customConfig = YamlConfiguration.loadConfiguration(customConfigFile);
      
         // Look for defaults in the jar
-        InputStream defConfigStream = GPFVault.instance.getResource(this.dataFile);
+        InputStream defConfigStream = plugin.getResource(this.dataFile);
         if (defConfigStream != null) {
             YamlConfiguration defConfig = YamlConfiguration.loadConfiguration(defConfigStream);
             customConfig.setDefaults(defConfig);
@@ -55,10 +58,10 @@ public class CustomConfig {
      */
     protected void saveDefaultConfig() {
         if (customConfigFile == null) {
-            customConfigFile = new File(GPFVault.instance.getDataFolder(), this.dataFile);
+            customConfigFile = new File(plugin.getDataFolder(), this.dataFile);
         }
         if (!customConfigFile.exists()) {            
         	GPFVault.instance.saveResource(this.dataFile, false);
-         }
+        }
     }
 }
