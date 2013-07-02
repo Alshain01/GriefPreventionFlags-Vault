@@ -50,7 +50,7 @@ import src.john01dav.GriefPreventionFlags.Messages;
 public class GPFVault extends JavaPlugin {
 	public static GPFVault instance;
 	protected Economy economy = null;
-	protected CustomConfig messages = new CustomConfig("messages.yml");
+	protected CustomConfig messages = new CustomConfig(this, "messages.yml");
 	private final boolean DEBUG = false;
 
 	/**
