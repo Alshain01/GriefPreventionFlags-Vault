@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jre6"/>
+	<classpathentry kind="lib" path="G:/workspace/bukkit-1.5.2-R1.0.jar"/>
+	<classpathentry kind="lib" path="G:/workspace/GriefPrevention.jar"/>
+	<classpathentry kind="lib" path="G:/workspace/Vault.jar"/>
+	<classpathentry kind="lib" path="G:/workspace/gpflags.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
