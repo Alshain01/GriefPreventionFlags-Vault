@@ -129,7 +129,7 @@ public class GPFlagsListener implements Listener {
 		// Check whether or not to charge the account
 		if (EBaseFlagValue.ALWAYS.isSet() 
 				|| (EBaseFlagValue.DEFAULT.isSet() && e.getNewValue() != flag.getType().getDefault()) 
-				|| (EBaseFlagValue.GLOBAL.isSet() && e.getNewValue() != flag.getValue()))
+				|| (EBaseFlagValue.GLOBAL.isSet() && e.getNewValue() != flag.getValue(e.getPlayer().getWorld())))
 		{ 
 			// Charge the account
 			e.setCancelled(makeTransaction(ETransactionType.Withdraw, EPurchaseType.Flag, flag, e.getPlayer()));
@@ -164,7 +164,7 @@ public class GPFlagsListener implements Listener {
 		// Check whether or not to refund the account
 		if (EBaseFlagValue.ALWAYS.isSet() 
 				|| (EBaseFlagValue.DEFAULT.isSet() && flag.getValue(claim) != flag.getType().getDefault()) 
-				|| (EBaseFlagValue.GLOBAL.isSet() && flag.getValue(claim) != flag.getValue()))
+				|| (EBaseFlagValue.GLOBAL.isSet() && flag.getValue(claim) != flag.getValue(e.getPlayer().getWorld())))
 	    { 
 			makeTransaction(ETransactionType.Deposit, EPurchaseType.Flag, flag, e.getPlayer());
 			return;
