@@ -43,6 +43,6 @@ public enum EMessages {
 			GPFVault.instance.getLogger().warning("<Error> Invalid messages.yml");
 			return ChatColor.RED + "<Error> Invalid messages.yml";
 		}
-		return message;
+		return ChatColor.translateAlternateColorCodes('&', message);
 	}
 }

@@ -1,5 +1,5 @@
 name: GriefPreventionFlags-Vault
-version: 1.0.1
+version: 1.0.3
 description: Adds Vault economy support to GriefPreventionFlags
 author: Alshain01
 main: src.alshain01.GPFVault.GPFVault
